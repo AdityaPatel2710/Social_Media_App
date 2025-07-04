@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import {
   Card,
   CardContent,
@@ -17,27 +16,11 @@ import {
 } from '@mui/icons-material';
 import formatDate from '../../helpers/formatDate';
 import calculateAge from '../../helpers/calculateAge';
-import { useParams } from 'react-router-dom';
-import getUserData from '../../helpers/getUserData';
 import UserProfileLoader from '../Loaders/UserProfileLoader';
+import useUserProfileData from '../../hooks/useUserProfileData';
 
 function UserProfile() {
-    const [userData, setUserData] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    let { userId } = useParams();
-
-    useEffect(() => {
-        getUserData(userId)
-        .then(res => {
-            setUserData(res);
-            setLoading(false);
-        })
-        .catch(error => {
-            console.error('Error fetching user data:', error);
-            setLoading(false);
-        });
-    }, [userId]);
+    const [userData, loading] = useUserProfileData();
   
     if(loading) {
         return <UserProfileLoader />;
