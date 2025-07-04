@@ -11,8 +11,9 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { Avatar } from '@mui/material';
+import { Avatar, Button } from '@mui/material';
 import profile from "../../assets/profile.jpg";
+import { Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -95,7 +96,8 @@ export default function PrimarySearchNavbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleMenuClose}> Profile </MenuItem>
+      {/** <Link className='route-link' to={`/user/${import.meta.env.VITE_USER_ID}`}> <MenuItem onClick={handleMenuClose}> Profile </MenuItem> </Link> */}
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
@@ -127,6 +129,7 @@ export default function PrimarySearchNavbar() {
         >
           <Avatar src={profile} />
         </IconButton>
+        {/** <Link className='route-link' to={`/user/${import.meta.env.VITE_USER_ID}`}> <p> Profile </p>  </Link> */}
         <p>Profile</p>
       </MenuItem>
     </Menu>
@@ -141,18 +144,21 @@ export default function PrimarySearchNavbar() {
             edge="start"
             color="inherit"
             aria-label="open drawer"
-            sx={{ mr: 2 }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            Social  App
-          </Typography>
+          <Button className='route-link-btn' sx={{all: 'inherit'}} >
+            <Link style={{ padding: 0}} className='route-link' to="/" >
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ display: { xs: 'none', sm: 'block' } }}
+              >
+                Social App 
+              </Typography>
+              </Link>
+            </Button>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

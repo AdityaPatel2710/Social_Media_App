@@ -7,6 +7,7 @@ import Avatar from '@mui/material/Avatar';
 import { memo, useEffect, useState } from 'react';
 import getUsers from '../../helpers/getUsers';
 import UserListLoader from '../Loaders/UserListLoader';
+import { Link } from 'react-router-dom';
 
 let dummyUser = {
                     "id": "60d0fe4f5311236168a109ca",
@@ -42,12 +43,14 @@ function UserList({ numberOfUsers }) {
             {
                 users.map(user => (
                     <ListItem key={user.id} >
-                        <ListItemButton>
-                            <ListItemAvatar>
-                                <Avatar src={user.picture} />
-                            </ListItemAvatar>
-                            <ListItemText primary={user.firstName+" "+user.lastName} />
-                        </ListItemButton>
+                        <Link className='route-link' to={`/user/${user.id}`} >
+                            <ListItemButton>
+                                <ListItemAvatar>
+                                    <Avatar src={user.picture} />
+                                </ListItemAvatar>
+                                <ListItemText primary={user.firstName+" "+user.lastName} />
+                            </ListItemButton>
+                        </Link>
                     </ListItem>
                 ))
             }

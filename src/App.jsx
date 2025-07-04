@@ -1,11 +1,15 @@
 import './App.css'
-import SocialApp from './components/SocialApp';
+import PrimarySearchNavbar from './components/Navbar/PrimarySearchNavbar';
+import MainRoutes from './routes/MainRoutes';
+import axios from 'axios';
 
 function App() {
+  axios.defaults.headers.common['app-id'] = import.meta.env.VITE_APP_ID;
 
   return (
     <>
-      <SocialApp />
+      <PrimarySearchNavbar />
+      <MainRoutes />
     </>
   )
 }

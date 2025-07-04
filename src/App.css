@@ -1,3 +1,11 @@
 body {
     background-color: rgb(240, 255, 247);
 }
+
+.route-link {
+    all: inherit;
+}
+
+.route-link-btn:hover {
+    cursor: pointer;
+}

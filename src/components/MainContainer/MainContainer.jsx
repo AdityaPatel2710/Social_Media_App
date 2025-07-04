@@ -18,7 +18,7 @@ function MainContainer() {
             <Grid container mx="4vw" columnSpacing={{ xs: 1, sm: 3, md: 6 }}>
 
                 <Grid pr="3vw" size={{xs: 0, md: 3}}>
-                    <UserList numberOfUsers={10} />
+                    <UserList numberOfUsers={50} />
                 </Grid>
                 
                 <Grid 
