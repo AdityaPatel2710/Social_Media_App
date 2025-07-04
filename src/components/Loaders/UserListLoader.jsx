@@ -7,7 +7,7 @@ import Skeleton from '@mui/material/Skeleton';
 
 function UserListLoader({ numberOfUsers }) {
     return (
-      <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'rgb(240, 255, 247)' }}>
         {Array(numberOfUsers).fill().map((_, idx) => (
           <ListItem key={idx} disablePadding>
             <ListItemButton>

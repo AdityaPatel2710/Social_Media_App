@@ -38,11 +38,11 @@ function UserList({ numberOfUsers }) {
     );
 
     return (
-        <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'rgb(240, 255, 247)' }}>
             {
                 users.map(user => (
                     <ListItem key={user.id} >
-                        <ListItemButton sx={{border: '1px solid grey'}}>
+                        <ListItemButton>
                             <ListItemAvatar>
                                 <Avatar src={user.picture} />
                             </ListItemAvatar>

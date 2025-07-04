@@ -7,12 +7,15 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import getUniqueDateForId from '../../helpers/getUniqueDate';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useState } from 'react';
 
 
 export default function PostCard({postDetails}) {
+  const [isLiked, setIsLiked] = useState(false);
 
   return (
     <Card sx={{ width: '25vw' }} elevation={3} >
@@ -23,13 +26,15 @@ export default function PostCard({postDetails}) {
         title={postDetails.owner.firstName+" "+postDetails.owner.lastName}
         subheader={getUniqueDateForId(parseInt(postDetails.id.slice(-5), 16))}
       />
-      <CardMedia
-        component="img"
-        height="250vh"
-        // image={`https://picsum.photos/seed/${postDetails.id}/350/250`}
-        image={postDetails.image}
-        alt="Paella dish"
-      />
+      { 
+        (postDetails.image != "") &&  <CardMedia
+                                        component="img"
+                                        height="250vh"
+                                        // image={`https://picsum.photos/seed/${postDetails.id}/350/250`}
+                                        image={postDetails.image}
+                                        alt="Image not available"
+                                      />
+      }
       <CardContent>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
           {postDetails.text}
@@ -37,8 +42,8 @@ export default function PostCard({postDetails}) {
       </CardContent>
       
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+        <IconButton aria-label="add to favorites" onClick={() => setIsLiked(!isLiked)}>
+          { (isLiked) ? <FavoriteIcon sx={{color: red[500]}} /> : <FavoriteBorderIcon /> }
         </IconButton>
         <IconButton aria-label="share">
           <ShareIcon />
