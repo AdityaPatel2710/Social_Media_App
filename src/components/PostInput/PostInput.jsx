@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {
   Box,
   Card,
@@ -16,11 +16,14 @@ import {
 } from '@mui/icons-material';
 import createPost from '../../helpers/createPost';
 import profile from "../../assets/profile.jpg";
+import PostsContext from '../../contexts/PostsContext';
 
 const PostInput = () => {
     const [postText, setPostText] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [showSuccess, setShowSuccess] = useState(false);
+
+    const { posts, setPosts } = useContext(PostsContext);
 
     const handlePost = () => {
         if (!postText.trim() && !imageUrl.trim()) {
@@ -29,10 +32,11 @@ const PostInput = () => {
 
         const postData = {postText, imageUrl};
         createPost(postData)
-        .then((res) => {
+        .then((newPost) => {
             setShowSuccess(true);
             setTimeout(() => setShowSuccess(false), 3000);
 
+            setPosts([newPost, ...posts]);
             setPostText('');
             setImageUrl('');
         })

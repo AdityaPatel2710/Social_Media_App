@@ -11,10 +11,10 @@ import ShareIcon from '@mui/icons-material/Share';
 import getUniqueDateForId from '../../helpers/getUniqueDate';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 
 
-export default function PostCard({postDetails}) {
+function PostCard({postDetails}) {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
@@ -53,3 +53,6 @@ export default function PostCard({postDetails}) {
     </Card>
   );
 } 
+
+
+export default memo(PostCard);

@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import PostCard from "../PostCard/PostCard";
 import getPosts from "../../helpers/getPosts";
 import PostLoader from "../Loaders/PostLoader";
+import PostsContext from "../../contexts/PostsContext";
 
 let dummyPost = {
                     "id": "685c662f97c41d2b6bbc05b6",
@@ -21,7 +22,7 @@ let dummyPost = {
                 };
 
 function PostCardList({ numberOfPosts }) {
-    const [posts, setPosts] = useState([]);
+    const { posts, setPosts } = useContext(PostsContext);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {

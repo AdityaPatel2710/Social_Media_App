@@ -4,7 +4,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import getUsers from '../../helpers/getUsers';
 import UserListLoader from '../Loaders/UserListLoader';
 
@@ -56,4 +56,4 @@ function UserList({ numberOfUsers }) {
 }
 
 
-export default UserList;
+export default memo(UserList);
